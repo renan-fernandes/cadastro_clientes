@@ -1,0 +1,36 @@
+<h1 class="text-center">Listagem de Clientes</h1>
+
+<div class="row">
+<a href="<?= $this->url('customer', ['action' => 'add']) ?>" class="btn btn-success">Adicionar Cliente</a>
+</div>
+
+<div class="row" style="margin-top:20px;" >
+	<table class="table table-striped">
+		<tr>
+			<th>Id</th>
+			<th>Foto</th>
+			<th>Nome</th>
+			<th>Email</th>
+			<th>Telefone</th>
+			<th>Ações</th>
+		</tr>
+		<?php
+			foreach($customers as $c)
+			{
+		?>
+			<tr>
+				<td><?= $c->getId() ?></td>
+				<td><img style="width:100px; height:130px"src="<?= '/app2/app'.substr($c->getPhoto(), 1) ?>"></img></td>
+				<td><?= $c->getName() ?></td>
+				<td><?= $c->getEmail() ?></td>
+				<td><?= $c->getTel() ?></td>
+				<td>
+				<a href="<?= $this->url('customer', ['action' => 'edit', 'id' => $c->getId()]) ?>" class="btn btn-info"><i class="glyphicon glyphicon-edit"></i></a>
+				<a href="<?= $this->url('customer', ['action' => 'delete', 'id' => $c->getId()]) ?>" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+				</td>
+			</tr>
+		<?php
+			}
+		?>
+	</table>
+</div>

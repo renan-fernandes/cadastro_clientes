@@ -1,0 +1,80 @@
+<?php
+
+$title = 'Editar Cliente';
+$this->headTitle($title);
+?>
+
+<h1 class="text-center"><?= $this->escapeHtml($title) ?></h1>
+
+<?php
+$form->setAttribute('action', $this->url('customer', ['action' => 'edit', 'id' => $id]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+
+$f_id = $this->form->get('f_id');
+$f_name = $this->form->get('f_name');
+$f_email = $this->form->get('f_email');
+$f_tel = $this->form->get('f_tel');
+$f_photo = $this->form->get('f_photo');
+
+$f_name->setAttribute('class', 'form-control');
+$f_name->setAttribute('autofocus', 'autofocus');
+
+$f_email->setAttribute('class', 'form-control');
+$f_email->setAttribute('autofocus', 'autofocus');
+
+$f_tel->setAttribute('class', 'form-control');
+$f_tel->setAttribute('autofocus', 'autofocus');
+
+$f_photo->setAttribute('class', 'form-control');
+$f_photo->setAttribute('autofocus', 'autofocus');
+
+$submit = $this->form->get('submit');
+$submit->setAttribute('class', 'btn btn-success');
+
+?>
+<?= $this->formElement($f_id) ?>
+
+<div class="row">
+	<div class="form-group">
+		<div class="col-md-6">
+			<?= $this->formLabel($f_name) ?>
+			<?= $this->formElement($f_name) ?>
+			<?= $this->formElementErrors()->render($f_name, ['class' => 'help-block']) ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-8">
+			<?= $this->formLabel($f_email) ?>
+			<?= $this->formElement($f_email) ?>
+			<?= $this->formElementErrors()->render($f_email, ['class' => 'help-block']) ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-4">
+			<?= $this->formLabel($f_tel) ?>
+			<?= $this->formElement($f_tel) ?>
+			<?= $this->formElementErrors()->render($f_tel, ['class' => 'help-block']) ?>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-6">
+			<?= $this->formLabel($f_photo) ?>
+			<?= $this->formElement($f_photo) ?>
+			<?= $this->formElementErrors()->render($f_photo, ['class' => 'help-block']) ?>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="padding-top:20px;">
+	<div class="form-group">
+		<div class="col-md-12">
+			<?= $this->formElement($submit) ?>
+			<a href="<?= $this->url('customer', ['action' => 'index']) ?>" class="btn btn-info">Voltar</a>
+		</div>
+	</div>
+</div>
+
+
+

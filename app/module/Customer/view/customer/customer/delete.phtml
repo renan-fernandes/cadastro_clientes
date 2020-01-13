@@ -1,0 +1,18 @@
+<?php
+
+$title = 'Remover Cliente';
+$this->headTitle($title);
+?>
+
+<h1 class="text-center"><?= $this->escapeHtml($title) ?></h1>
+
+<p>Deseja realmente excluir "<?= $this->escapeHtml($customer->getName()) ?>"?</p>
+
+<form method="post" action="<?= $this->url('customer', ['action' => 'delete', 'id' => $id]) ?>">
+	<div class="form-group">
+		<input type="hidden" name="id" value="<?= $id ?>">
+		<input type="submit" class="btn btn-danger" name="del" value="Sim">
+		<input type="submit" class="btn btn-info" name="del" value="Não">		
+	</div>
+</form>
+
